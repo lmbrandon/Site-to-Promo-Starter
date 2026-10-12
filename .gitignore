@@ -1,0 +1,39 @@
+# --- Secrets ---------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Logged-in browser sessions (can contain cookies / personal data) ------
+.playwright/
+.playwright-cli/
+playwright/.auth/
+*.auth.json
+storage-state*.json
+state*.json
+
+# --- Your working data (the folders stay; the contents don't) --------------
+# Keep each folder's README.md so the structure survives a clone.
+capture/*
+!capture/README.md
+audio/*
+!audio/README.md
+music/*
+!music/README.md
+videos/*
+!videos/README.md
+
+# --- Generated media anywhere ----------------------------------------------
+renders/
+snapshots/
+*.mp3
+*.wav
+*.mp4
+*.mov
+*.webm
+
+# --- Tooling / OS noise -----------------------------------------------------
+node_modules/
+.hyperframes/
+*.log
+.DS_Store
+Thumbs.db
