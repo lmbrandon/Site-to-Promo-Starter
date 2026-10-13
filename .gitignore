@@ -37,3 +37,16 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# --- HyperFrames skills: installed with `npx hyperframes skills update`, not vendored ---
+.claude/skills/hyperframes/
+.claude/skills/hyperframes-core/
+.claude/skills/hyperframes-cli/
+.claude/skills/hyperframes-animation/
+.claude/skills/hyperframes-creative/
+.claude/skills/hyperframes-audio/
+.claude/skills/hyperframes-keyframes/
+.claude/skills/hyperframes-registry/
+.claude/skills/hyperframes-studio/
+.claude/skills/media-use/
+.claude/skills/product-launch-video/
