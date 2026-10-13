@@ -50,12 +50,13 @@ You need:
 | [Node.js 22+](https://nodejs.org) | Runs HyperFrames and the voice script | `node -v` |
 | [FFmpeg](https://ffmpeg.org/download.html) | Audio leveling and image tools | `ffmpeg -version` |
 | [Claude Code](https://claude.com/claude-code) | The agent that drives the workflow | `claude --version` |
-| [Playwright CLI](https://playwright.dev) | Opens a real browser to scan the site | `npm i -g @playwright/cli@latest` |
+| [Playwright CLI](https://playwright.dev) | Opens a real browser to scan the site | `playwright-cli --version` (install in the commands below) |
 | A [Fish Audio](https://fish.audio/?fpr=awzeir) API key (affiliate link; keys are under *API Keys* in your account) | The Drama 3 voice model | see below |
 
 Then:
 
 ```bash
+npm i -g @playwright/cli@latest     # the browser tool (skip if `playwright-cli --version` works)
 git clone <this-repo-url> website-trailer-studio
 cd website-trailer-studio
 
