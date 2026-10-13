@@ -215,4 +215,4 @@ By using this repository you accept these terms.
 - Marketing skills in `.agents/skills/`: [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), MIT, included with attribution (`.agents/skills/LICENSE-marketingskills.txt`).
 - Video engine: [HyperFrames](https://hyperframes.heygen.com). Voice: [Fish Audio](https://fish.audio/?fpr=awzeir) (affiliate link). Browser automation: [Playwright](https://playwright.dev).
 
-**Found this useful?** Star the repo, share your trailer, and open an issue with what you'd like the workflow to teach next.
+**Found this useful?** Star the repo, share your trailer, and open an issue with what you'd like the workflow to teach next. If you'd like to support the project, you can [buy me a coffee](https://buymeacoffee.com/brandonmelville). Totally optional, and always appreciated.
