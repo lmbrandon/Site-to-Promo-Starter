@@ -35,8 +35,7 @@ Everything is code (HTML + GSAP), so updating a price or a headline number later
 ## How it works
 
 ```
- point at site ──▶ scan ──▶ script ──▶ voiceover ──▶ music ──▶ build ──▶ preview ──▶ render
-     (Step 1)     (Step 1)  (Step 3)    (Step 4)    (Step 5)  (Step 6)   (Step 7)    (Step 7)
+1 Scan ─▶ 2 Brief ─▶ 3 Script ─▶ 4 Voiceover ─▶ 5 Music ─▶ 6 Build ─▶ 7 Preview & render
 ```
 
 The agent does the work. You make the decisions: what to say, how it should sound, and when to hit render.
