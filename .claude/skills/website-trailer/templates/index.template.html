@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: normal; src: url("assets/fonts/Playfair-700.ttf"); }
+      @font-face { font-family: "Playfair Display"; font-weight: 700; font-style: italic; src: url("assets/fonts/Playfair-700i.ttf"); }
+      @font-face { font-family: "Playfair Display"; font-weight: 900; font-style: normal; src: url("assets/fonts/Playfair-900.ttf"); }
+      @font-face { font-family: "Inter"; font-weight: 500; font-style: normal; src: url("assets/fonts/Inter-500.ttf"); }
+      @font-face { font-family: "Inter"; font-weight: 700; font-style: normal; src: url("assets/fonts/Inter-700.ttf"); }
+
+      :root {
+        --navy: #0b1226;
+        --navy2: #14203f;
+        --navy3: #1e2e57;
+        --gold: #d9a441;
+        --cream: #f5e6b8;
+        --white: #ffffff;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--navy); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Inter", sans-serif; color: var(--white); }
+
+      .bg { position: absolute; inset: 0; background:
+          radial-gradient(1100px 700px at 78% 18%, rgba(217,164,65,0.16), transparent 70%),
+          radial-gradient(900px 700px at 8% 100%, rgba(30,46,87,0.9), transparent 70%),
+          var(--navy); }
+      .frame { position: absolute; inset: 36px; border: 2px solid rgba(217,164,65,0.35); border-radius: 6px; pointer-events: none; }
+      .scene { position: absolute; inset: 0; }
+      .center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+      .serif { font-family: "Playfair Display", serif; }
+      .eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+      .big { font-family: "Playfair Display", serif; font-weight: 900; font-size: 148px; line-height: 1.02; letter-spacing: -0.02em; }
+      .gold { color: var(--gold); }
+      .ital { font-style: italic; font-weight: 700; }
+      .h2 { font-family: "Playfair Display", serif; font-weight: 900; font-size: 96px; line-height: 1.05; letter-spacing: -0.01em; }
+      .lead { font-size: 36px; line-height: 1.4; color: var(--cream); font-weight: 500; }
+
+      .card { position: absolute; border-radius: 16px; overflow: hidden; border: 2px solid rgba(217,164,65,0.6); box-shadow: 0 30px 80px rgba(0,0,0,0.55); background: var(--navy2); }
+      .card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .tag { position: absolute; font-family: "Inter", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 14px 26px; border-radius: 999px; white-space: nowrap; }
+      .cap { position: absolute; font-family: "Playfair Display", serif; font-weight: 700; font-size: 44px; color: var(--white); line-height: 1.15; }
+      .cap small { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: 26px; color: var(--cream); margin-top: 8px; letter-spacing: 0.02em; }
+
+      /* scene 1 */
+      #s1 .line { position: absolute; left: 0; right: 0; text-align: center; }
+      /* scene 2 */
+      .strike-wrap { position: relative; display: inline-block; }
+      .strike { position: absolute; left: -2%; top: 54%; height: 14px; width: 104%; background: var(--gold); border-radius: 7px; transform-origin: left center; }
+      /* scene 4 */
+      .step { position: absolute; left: 190px; right: 190px; height: 170px; display: flex; align-items: center; gap: 48px; border-bottom: 2px solid rgba(217,164,65,0.28); }
+      .step .num { font-family: "Playfair Display", serif; font-weight: 900; font-size: 120px; color: var(--gold); width: 190px; }
+      .step .t { font-family: "Playfair Display", serif; font-weight: 900; font-size: 74px; line-height: 1.05; }
+      .step .d { font-size: 30px; color: var(--cream); margin-top: 6px; font-weight: 500; }
+      /* scene 8 */
+      .url { font-family: "Inter", sans-serif; font-weight: 700; font-size: 44px; letter-spacing: 0.04em; color: var(--navy); background: var(--gold); padding: 24px 54px; border-radius: 999px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="56.5" data-width="1920" data-height="1080">
+      <div class="bg clip" data-start="0" data-duration="56.5" data-track-index="0"></div>
+      <div class="frame clip" data-start="0" data-duration="56.5" data-track-index="1"></div>
+
+      <!-- ===== Scene 1: Hook (0 – 5.8) ===== -->
+      <div id="s1" class="scene clip center" data-start="0" data-duration="5.8" data-track-index="2">
+        <div class="eyebrow" id="s1-eye" style="position:absolute; top:130px;">[Brand Name]</div>
+        <div class="big" id="s1-a">You can build<br>anything with AI.</div>
+        <div class="big gold ital" id="s1-b" style="font-size:132px; margin-top:34px;">So why can't you sell it?</div>
+      </div>
+
+      <!-- ===== Scene 2: Problem (5.8 – 8.6) ===== -->
+      <div id="s2" class="scene clip center" data-start="5.8" data-duration="2.8" data-track-index="2">
+        <div class="big" style="font-size:190px;"><span class="strike-wrap"><span id="s2-word">Building</span><span class="strike" id="s2-strike"></span></span></div>
+        <div class="h2 gold ital" id="s2-b" style="margin-top:26px; font-weight:700;">was never the hard part.</div>
+      </div>
+
+      <!-- ===== Scene 3: Welcome (8.6 – 19.0) ===== -->
+      <div id="s3" class="scene clip" data-start="8.6" data-duration="10.4" data-track-index="2">
+        <img id="s3-logo" src="assets/logo.jpg" alt="" style="position:absolute; left:150px; top:150px; width:150px; height:150px; border-radius:18px; object-fit:cover;">
+        <div class="eyebrow" id="s3-eye" style="position:absolute; left:150px; top:340px;">Welcome to</div>
+        <div class="h2" id="s3-title" style="position:absolute; left:150px; top:385px; font-size:118px; line-height:1;">[Brand]<br><span class="gold">[Name]</span></div>
+        <div style="position:absolute; left:150px; top:690px;">
+          <span class="serif gold" id="s3-count" style="font-weight:900; font-size:150px;">0</span>
+          <span class="lead" id="s3-count-l" style="font-size:44px; margin-left:18px;">[stat label, e.g. customers served]</span>
+        </div>
+        <div class="lead" id="s3-sub" style="position:absolute; left:150px; top:880px; font-size:40px;">[Who they are today] <span class="gold">→</span> [Who they become]</div>
+        <div class="card" id="s3-card" style="left:1020px; top:180px; width:760px; height:430px;"><img src="assets/img/page-1.png" alt="" style="object-position:top left;"></div>
+        <div class="card" id="s3-card2" style="left:1160px; top:520px; width:620px; height:330px;"><img src="assets/cover.jpg" alt=""></div>
+        <div class="tag" id="s3-tag" style="left:1160px; top:900px;">[Key proof point]</div>
+      </div>
+
+      <!-- ===== Scene 4: The Path (19 – 28.5) ===== -->
+      <div id="s4" class="scene clip" data-start="19" data-duration="9.5" data-track-index="2">
+        <div class="eyebrow" id="s4-eye" style="position:absolute; left:190px; top:110px;">The path</div>
+        <div class="step" id="s4-1" style="top:170px;"><div class="num">01</div><div><div class="t">Find an audience</div><div class="d">with a problem worth solving</div></div></div>
+        <div class="step" id="s4-2" style="top:340px;"><div class="num">02</div><div><div class="t">Build a product</div><div class="d">that holds up under real use</div></div></div>
+        <div class="step" id="s4-3" style="top:510px;"><div class="num">03</div><div><div class="t">Market &amp; sell it</div><div class="d">learn to get it in front of buyers</div></div></div>
+        <div class="step" id="s4-4" style="top:680px; border-bottom:none;"><div class="num">04</div><div><div class="t">Deliver &amp; earn trust</div><div class="d">no more broken demos</div></div></div>
+        <div class="serif gold ital" id="s4-foot" style="position:absolute; left:190px; right:190px; top:900px; font-size:48px; font-weight:700;">From idea to a product you can sell.</div>
+      </div>
+
+      <!-- ===== Scene 5: Programs (28.5 – 36.3) ===== -->
+      <div id="s5" class="scene clip" data-start="28.5" data-duration="7.8" data-track-index="2">
+        <div class="eyebrow" id="s5-eye" style="position:absolute; left:0; right:0; text-align:center; top:90px;">[Section eyebrow, e.g. What you get]</div>
+        <div class="card" id="s5-a" style="left:120px; top:210px; width:810px; height:417px;"><img src="assets/img/img1.jpg" alt=""></div>
+        <div class="cap" id="s5-ca" style="left:120px; top:670px; width:810px;">[Program One]<small>[One-line promise]</small></div>
+        <div class="card" id="s5-b" style="left:990px; top:210px; width:810px; height:417px;"><img src="assets/img/img2.jpg" alt=""></div>
+        <div class="cap" id="s5-cb" style="left:990px; top:670px; width:810px;">[Program Two]<small>[One-line promise]</small></div>
+        <div class="tag" id="s5-ta" style="left:120px; top:900px;">[Step 1 · duration]</div>
+        <div class="tag" id="s5-tb" style="left:990px; top:900px;">[Step 2 · duration]</div>
+      </div>
+
+      <!-- ===== Scene 6: Skills (36.3 – 41.7) ===== -->
+      <div id="s6" class="scene clip" data-start="36.3" data-duration="5.4" data-track-index="2">
+        <div class="h2" id="s6-h" style="position:absolute; left:0; right:0; top:90px; text-align:center;">[Skills headline]. <span class="gold ital">[Before → After].</span></div>
+        <div class="card" id="s6-a" style="left:90px; top:370px; width:560px; height:288px;"><img src="assets/img/img3.jpg" alt=""></div>
+        <div class="card" id="s6-b" style="left:680px; top:370px; width:560px; height:288px;"><img src="assets/img/img4.jpg" alt=""></div>
+        <div class="card" id="s6-c" style="left:1270px; top:370px; width:560px; height:288px;"><img src="assets/img/img5.jpg" alt=""></div>
+        <div class="cap" id="s6-ca" style="left:90px; top:690px; width:560px; font-size:38px;">[Course A]</div>
+        <div class="cap" id="s6-cb" style="left:680px; top:690px; width:560px; font-size:38px;">[Course B]</div>
+        <div class="cap" id="s6-cc" style="left:1270px; top:690px; width:560px; font-size:38px;">[Course C]</div>
+        <div class="lead" id="s6-foot" style="position:absolute; left:0; right:0; top:880px; text-align:center; font-size:40px;">[One line on what the courses give you.]</div>
+      </div>
+
+      <!-- ===== Scene 7: Support (41.7 – 48.6) ===== -->
+      <div id="s7" class="scene clip" data-start="41.7" data-duration="6.9" data-track-index="2">
+        <div class="eyebrow" id="s7-eye" style="position:absolute; left:150px; top:150px;">Stuck? You're covered.</div>
+        <div class="h2" id="s7-h" style="position:absolute; left:150px; top:210px; font-size:82px;">[Support promise.]<br><span class="gold ital">[Payoff.]</span></div>
+        <div class="lead" id="s7-sub" style="position:absolute; left:150px; top:520px; width:700px;">[One supporting sentence taken from the site.]</div>
+        <div class="card" id="s7-card" style="left:960px; top:150px; width:810px; height:455px;"><img src="assets/img/page-3.png" alt="" style="object-position:top left;"></div>
+        <div class="card" id="s7-cal" style="left:150px; top:690px; width:760px; height:260px; display:flex; align-items:center; gap:36px; padding:0 44px; background:var(--navy3);">
+          <div class="serif gold" style="font-weight:900; font-size:96px; width:120px;">★</div>
+          <div><div class="serif" style="font-weight:900; font-size:54px; line-height:1.1;">[Extra feature or proof]</div><div class="lead" style="font-size:30px; margin-top:8px;">[Calendar event name] · [what members get]</div></div>
+        </div>
+        <div class="card" id="s7-chip" style="left:1000px; top:690px; width:770px; height:260px; background:var(--gold); display:flex; align-items:center; justify-content:center; border-color:var(--gold);">
+          <div class="serif" style="font-weight:900; font-size:64px; color:var(--navy); text-align:center; line-height:1.1;">[Second feature]<div style="font-family:Inter; font-weight:700; font-size:28px; letter-spacing:0.06em; margin-top:10px;">[ASK] → [GET]</div></div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 8: CTA (48.6 – 56.5) ===== -->
+      <div id="s8" class="scene clip center" data-start="48.6" data-duration="7.9" data-track-index="2">
+        <img id="s8-logo" src="assets/logo.jpg" alt="" style="width:170px; height:170px; border-radius:22px; object-fit:cover; margin-bottom:30px;">
+        <div class="big" id="s8-a" style="font-size:132px;">Try <span class="gold ital">[Brand]</span></div>
+        <div style="display:flex; align-items:baseline; gap:30px; margin-top:34px;" id="s8-price">
+          <span class="serif gold" style="font-weight:900; font-size:140px;">$[X]</span>
+          <span class="lead" style="font-size:44px;">/ month</span>
+          <span class="lead" style="font-size:44px; margin-left:30px;">→ $[Y] on <b style="color:var(--white)">[Date]</b></span>
+        </div>
+        <div class="url" id="s8-url" style="margin-top:44px;">[yourdomain.com]</div>
+      </div>
+
+      <!-- ===== Audio ===== -->
+      <audio id="music" src="music-leveled.mp3" data-start="0" data-duration="56.5" data-track-index="10" data-volume="0.7" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0},{&quot;t&quot;:1.2,&quot;v&quot;:1},{&quot;t&quot;:53.5,&quot;v&quot;:1},{&quot;t&quot;:56.5,&quot;v&quot;:0}]}]}"></audio>
+      <audio id="vo1" src="assets/vo/line1.mp3" data-start="0.3" data-duration="5.12" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo2" src="assets/vo/line2.mp3" data-start="5.8" data-duration="2.38" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo3" src="assets/vo/line3.mp3" data-start="8.6" data-duration="10.14" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo4" src="assets/vo/line4.mp3" data-start="19" data-duration="9.17" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo5" src="assets/vo/line5.mp3" data-start="28.5" data-duration="7.45" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo6" src="assets/vo/line6.mp3" data-start="36.3" data-duration="5.12" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo7" src="assets/vo/line7.mp3" data-start="41.7" data-duration="6.61" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo8" src="assets/vo/line8.mp3" data-start="48.6" data-duration="6.01" data-track-index="11" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const E = "power3.out";
+      const rise = (sel, t, d = 0.7, y = 50) => tl.fromTo(sel, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: E }, t);
+      const fade = (sel, t, d = 0.4) => tl.to(sel, { opacity: 0, duration: d, ease: "power1.in" }, t);
+
+      // ---- Scene 1 ----
+      rise("#s1-eye", 0.2, 0.6, 20);
+      rise("#s1-a", 0.5, 0.9, 60);
+      rise("#s1-b", 3.0, 0.8, 50);
+      fade("#s1", 5.4, 0.4);
+
+      // ---- Scene 2 ----
+      tl.fromTo("#s2-word", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: E }, 5.9);
+      tl.fromTo("#s2-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 6.5);
+      tl.to("#s2-word", { opacity: 0.45, duration: 0.3 }, 6.6);
+      rise("#s2-b", 6.8, 0.6, 40);
+      fade("#s2", 8.25, 0.35);
+
+      // ---- Scene 3 ----
+      tl.fromTo("#s3-logo", { opacity: 0, scale: 0.5, rotation: -12 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, 8.8);
+      rise("#s3-eye", 9.2, 0.5, 20);
+      rise("#s3-title", 9.4, 0.9, 50);
+      tl.fromTo("#s3-card", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.9, ease: E }, 9.8);
+      tl.fromTo("#s3-card img", { scale: 1.0 }, { scale: 1.08, duration: 9, ease: "none" }, 9.8);
+      const cnt = { v: 0 };
+      rise("#s3-count", 13.2, 0.3, 20);
+      rise("#s3-count-l", 13.4, 0.5, 20);
+      tl.to(cnt, { v: 100 /* TODO: headline number */, duration: 1.6, ease: "power2.out", onUpdate: () => { document.getElementById("s3-count").textContent = Math.round(cnt.v); } }, 13.3);
+      tl.fromTo("#s3-card2", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.9, ease: E }, 13.6);
+      rise("#s3-tag", 14.6, 0.5, 20);
+      rise("#s3-sub", 16.0, 0.7, 30);
+      fade("#s3", 18.6, 0.4);
+
+      // ---- Scene 4 ----
+      rise("#s4-eye", 19.1, 0.5, 20);
+      [["#s4-1", 19.4], ["#s4-2", 22.2], ["#s4-3", 24.6], ["#s4-4", 27.0]].forEach(([s, t]) => {
+        tl.fromTo(s, { opacity: 0, x: -90 }, { opacity: 1, x: 0, duration: 0.7, ease: E }, t);
+      });
+      rise("#s4-foot", 27.7, 0.5, 20);
+      fade("#s4", 28.1, 0.4);
+
+      // ---- Scene 5 ----
+      rise("#s5-eye", 28.6, 0.5, 20);
+      tl.fromTo("#s5-a", { opacity: 0, y: 80, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: E }, 28.9);
+      rise("#s5-ca", 29.3, 0.6, 30);
+      rise("#s5-ta", 29.8, 0.5, 20);
+      tl.fromTo("#s5-b", { opacity: 0, y: 80, rotation: 2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.9, ease: E }, 32.4);
+      rise("#s5-cb", 32.8, 0.6, 30);
+      rise("#s5-tb", 33.3, 0.5, 20);
+      fade("#s5", 35.9, 0.4);
+
+      // ---- Scene 6 ----
+      rise("#s6-h", 36.4, 0.7, 40);
+      [["#s6-a", "#s6-ca", 37.0], ["#s6-b", "#s6-cb", 37.6], ["#s6-c", "#s6-cc", 38.2]].forEach(([c, cap, t]) => {
+        tl.fromTo(c, { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.8, ease: E }, t);
+        rise(cap, t + 0.3, 0.5, 20);
+      });
+      rise("#s6-foot", 39.4, 0.6, 20);
+      fade("#s6", 41.3, 0.4);
+
+      // ---- Scene 7 ----
+      rise("#s7-eye", 41.8, 0.5, 20);
+      rise("#s7-h", 42.0, 0.9, 50);
+      rise("#s7-sub", 43.4, 0.6, 20);
+      tl.fromTo("#s7-card", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.9, ease: E }, 42.3);
+      tl.fromTo("#s7-card img", { scale: 1 }, { scale: 1.07, duration: 6, ease: "none" }, 42.3);
+      tl.fromTo("#s7-chip", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: E }, 44.2);
+      tl.fromTo("#s7-cal", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: E }, 46.0);
+      fade("#s7", 48.2, 0.4);
+
+      // ---- Scene 8 ----
+      tl.fromTo("#s8-logo", { opacity: 0, scale: 0.4, rotation: -15 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, 48.8);
+      rise("#s8-a", 49.2, 0.9, 50);
+      tl.fromTo("#s8-price", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: E }, 50.2);
+      tl.fromTo("#s8-url", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 52.4);
+      tl.to("#s8-url", { scale: 1.05, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 53.2);
+      tl.to("#s8", { opacity: 0, duration: 1.0, ease: "power1.in" }, 55.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
