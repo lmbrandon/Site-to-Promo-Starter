@@ -67,7 +67,10 @@ cp .env.example .env
 #    They are not bundled in this repo, so you always get the latest. Docs: https://hyperframes.heygen.com
 npx hyperframes skills update product-launch-video
 
-# 3. Start your agent in this folder
+# 3. Install the Playwright browser skill into this folder (not bundled here either)
+playwright-cli install --skills
+
+# 4. Start your agent in this folder
 claude
 ```
 
@@ -75,8 +78,7 @@ What's already in the box:
 
 ```
 .claude/skills/website-trailer/  the end-to-end workflow (scripts + template)
-.claude/skills/playwright-cli/   browser automation skill
-(HyperFrames skills are installed by step 2 above, not stored here)
+(the HyperFrames and Playwright skills are installed by steps 2 and 3 above, not stored here)
 .agents/skills/                  10 marketing skills, kept separate (see .agents/README.md)
 docs/drama-3-guide.md            how to direct the Drama 3 voice
 capture/  audio/  music/  videos/   your working folders (empty, git-ignored)
