@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repo is a workflow that turns a website into a narrated trailer video: scan the site, write a script, record a directed AI voiceover, level the user's music, and build and render a HyperFrames composition. The entry point is the **`website-trailer`** skill (`.claude/skills/website-trailer/SKILL.md`). Read it and follow it. `README.md` is the human walkthrough.
+**Site to Trailer Starter** is a workflow that turns a website into a narrated trailer video: scan the site, write a script, record a directed AI voiceover, level the user's music, and build and render a HyperFrames composition. The entry point is the **`website-trailer`** skill (`.claude/skills/website-trailer/SKILL.md`). Read it and follow it. `README.md` is the human walkthrough.
 
 ## Before you start
 

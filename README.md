@@ -1,4 +1,6 @@
-# Website Trailer Studio
+# Site to Trailer Starter
+
+*A starter project for HyperFrames, Fish Audio and your AI agent. Learn the workflow, then make it yours.*
 
 **Turn any website into a cinematic, narrated trailer in an afternoon, with an AI agent doing the heavy lifting.**
 
@@ -57,8 +59,8 @@ Then:
 
 ```bash
 npm i -g @playwright/cli@latest     # the browser tool (skip if `playwright-cli --version` works)
-git clone <this-repo-url> website-trailer-studio
-cd website-trailer-studio
+git clone <this-repo-url> site-to-trailer-starter
+cd site-to-trailer-starter
 
 # 1. Add your Fish Audio key (this file is git-ignored)
 cp .env.example .env
