@@ -139,7 +139,9 @@ Lines feel crowded? Raise the gap between lines (`--gap`); it depends on the vid
 
 ## Step 5: Add your music (and level it)
 
-Drop a track you have the rights to use into `music/`. Then let the agent level it:
+**No track yet?** The agent writes you a ready-to-paste prompt for [Suno](https://suno.com), built from your site: what you sell, who it's for, your brand's feel, the script's mood and the exact length of your voiceover. You get three blocks to copy (style prompt, structure, styles to exclude). Paste them into Suno, generate, and download your favorite take.
+
+Drop the track into `music/` (use only music you have the rights to use; check your Suno plan for commercial use). Then let the agent level it:
 
 ```bash
 bash .claude/skills/website-trailer/scripts/level-music.sh music/your-track.mp3 music-leveled.mp3 60

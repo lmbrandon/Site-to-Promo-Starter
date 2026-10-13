@@ -1,6 +1,6 @@
 ---
 name: website-trailer
-description: Build a narrated trailer/promo video for any website, web app, product page, course, community or portfolio, end to end. Scans the site with playwright-cli (public pages, or logged-in pages after the user logs in), writes a script, generates the voiceover with Fish Audio Drama 3, levels the user's music, and builds + checks + renders a HyperFrames composition. Use for a new trailer, or to refresh an existing one when the site changes (new features, price, stats).
+description: Build a narrated trailer/promo video for any website, web app, product page, course, community or portfolio, end to end. Scans the site with playwright-cli (public pages, or logged-in pages after the user logs in), writes a script, generates the voiceover with Fish Audio Drama 3, writes a ready-to-paste Suno music prompt from the site and levels the resulting track, and builds + checks + renders a HyperFrames composition. Use for a new trailer, or to refresh an existing one when the site changes (new features, price, stats).
 ---
 
 # Website trailer
@@ -13,7 +13,7 @@ Proven workflow (about 56s, 16:9, 8 scenes, real screenshots from the site). Hyp
 
 - Site URL, and whether the pages to feature need a login.
 - Permission: the user owns the site or has written permission to feature it.
-- Music file (the user keeps these in `music/`), and that they are licensed to use it.
+- Music file (the user keeps these in `music/`), and that they are licensed to use it. If they have none, you write them a Suno prompt from the site (step 4); do not ask them to invent one.
 - Voice: default Adrian `bf322df2096a46f18c579d0baa36f41d`; others in `docs/drama-3-guide.md`.
 - Length (default ~45-60s) and format (default 1920x1080; 9:16 for Shorts/Reels/TikTok).
 - Run shape. If the user wants it hands-off, use `flow: automation`, `storyboard: no`; rendering is still gated on their approval.
@@ -79,9 +79,11 @@ What it does: sends the whole script (lines joined by blank lines, each with its
 
 Verify the cut: transcribe each `lineN.mp3` and confirm it starts and ends on whole words; a piece that is silent or clipped means a bad cut point. Non-English: write the lines in the target language (direction brackets can stay English); an English voice may accent them and mangle brand names (e.g. "Vuitton"), so listen to the result and use a phonetic respelling if needed. The `model: drama-3-preview` header is required: without it Fish silently falls back to another model. Do not use the workflow's `audio.mjs`; it only knows HeyGen and Kokoro.
 
-## 4. Music: level it, never just turn it down
+## 4. Music: write the Suno prompt from the site, then level the track
 
-Raw tracks swing several LU, so a fixed low volume still "goes up and down" under speech.
+**If the user has no track yet, give them a ready-to-paste Suno prompt built from this site.** Do it once the script and voiceover are final (you then know the length and the emotional arc). Fill `<skill>/templates/suno-prompt.template.md`: genre, instruments, tempo and mood come from what the site sells, who it is for, the brand's feel (colors, type, copy tone), the script's arc and the voice direction. Match the voiceover length from `assets/vo/timing.json`. Always instrumental, calm dynamics, room for the narrator. Save it as `MUSIC_PROMPT.md` in the project and print the three blocks (Style prompt, Lyrics/structure box, Exclude styles) in chat so the user can copy them into Suno. Never reuse a generic prompt; if it could describe any site, rewrite it. Then ask the user to drop the generated file into `music/`, give you the filename, and confirm they are licensed to use it (Suno's plan tier decides commercial rights). If they already have a track, skip the prompt.
+
+Then level it, never just turn it down. Raw tracks swing several LU, so a fixed low volume still "goes up and down" under speech.
 
 ```bash
 bash <skill>/scripts/level-music.sh music.mp3 music-leveled.mp3 60

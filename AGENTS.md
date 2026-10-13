@@ -22,7 +22,7 @@
 
 - **Scan** the site with `npx hyperframes capture` (public) or `playwright-cli` (login-gated). Fall back to playwright if capture fails. Never fabricate pages.
 - **Voiceover: always render the whole script as ONE clip, then cut it.** Never make one TTS request per line. Use `.claude/skills/website-trailer/scripts/gen-vo.mjs`. It writes the pieces and `assets/vo/timing.json`. Pick the gap between pieces per video (`--gap`, about 0.35 default, 0.5 to 0.8 for slow or whispered reads) and re-cut with `--reuse`. Verify each piece starts and ends on whole words.
-- **Music:** level it with `scripts/level-music.sh` instead of just turning it down, then use a flat volume envelope.
+- **Music:** if the user has no track, write them a ready-to-paste **Suno prompt built from the site** (style prompt, structure box, exclude styles, length) using `templates/suno-prompt.template.md`, save it as `MUSIC_PROMPT.md` and print it in chat. Never a generic prompt. Then level their track with `scripts/level-music.sh` instead of just turning it down, and use a flat volume envelope.
 - **Build** from `templates/index.template.html`. Time every reveal to the spoken word using `timing.json`.
 - **Check** with `npx hyperframes check` and `npx hyperframes snapshot` before showing the user. Fix all errors. Then `npx hyperframes preview --background`, and ask whether to render or change something.
 - Projects live in `videos/<site>-trailer/` (git-ignored). Run commands from there with `--env-file=../../.env`.
