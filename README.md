@@ -1,4 +1,4 @@
-# Site to Trailer Starter
+# Site to Promo Starter
 
 *A starter project for HyperFrames, Fish Audio and your AI agent. Learn the workflow, then make it yours.*
 
@@ -14,23 +14,29 @@ Works for SaaS products, landing pages, online courses, communities, agencies, p
 
 ---
 
+
+
 ## What you end up with
 
 A ~45-60 second, 16:9 trailer (9:16 works too) built from your site's own pages:
 
-| Scene | What viewers see | Where it comes from |
-|---|---|---|
-| Hook | One big question that stops the scroll | Your core promise |
-| Problem | The pain your audience feels | Your homepage / about copy |
-| Intro | Logo, headline number, real page screenshot | Your scan |
-| How it works | Step-by-step cards, timed to the narration | Your homepage / docs |
-| Features (x2) | Real product, course or feature images sliding in | Your product pages |
-| Proof / support | Testimonials, extras, guarantees | Your pricing / social-proof pages |
-| CTA | Price, deadline, link | Your pricing page |
+
+| Scene           | What viewers see                                  | Where it comes from               |
+| --------------- | ------------------------------------------------- | --------------------------------- |
+| Hook            | One big question that stops the scroll            | Your core promise                 |
+| Problem         | The pain your audience feels                      | Your homepage / about copy        |
+| Intro           | Logo, headline number, real page screenshot       | Your scan                         |
+| How it works    | Step-by-step cards, timed to the narration        | Your homepage / docs              |
+| Features (x2)   | Real product, course or feature images sliding in | Your product pages                |
+| Proof / support | Testimonials, extras, guarantees                  | Your pricing / social-proof pages |
+| CTA             | Price, deadline, link                             | Your pricing page                 |
+
 
 Everything is code (HTML + GSAP), so updating a price or a headline number later is a one-line change and a re-render.
 
 ---
+
+
 
 ## How it works
 
@@ -42,17 +48,21 @@ The agent does the work. You make the decisions: what to say, how it should soun
 
 ---
 
+
+
 ## Step 0: Get set up (about 10 minutes, once)
 
 You need:
 
-| Tool | Why | Check it |
-|---|---|---|
-| [Node.js 22+](https://nodejs.org) | Runs HyperFrames and the voice script | `node -v` |
-| [FFmpeg](https://ffmpeg.org/download.html) | Audio leveling and image tools | `ffmpeg -version` |
-| [Claude Code](https://claude.com/claude-code) | The agent that drives the workflow | `claude --version` |
-| [Playwright CLI](https://playwright.dev) | Opens a real browser to scan the site | `playwright-cli --version` (install in the commands below) |
-| A [Fish Audio](https://fish.audio/?fpr=awzeir) API key (affiliate link; keys are under *API Keys* in your account) | The Drama 3 voice model | see below |
+
+| Tool                                                                                                               | Why                                   | Check it                                                   |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------------------------------------- |
+| [Node.js 22+](https://nodejs.org)                                                                                  | Runs HyperFrames and the voice script | `node -v`                                                  |
+| [FFmpeg](https://ffmpeg.org/download.html)                                                                         | Audio leveling and image tools        | `ffmpeg -version`                                          |
+| [Claude Code](https://claude.com/claude-code)                                                                      | The agent that drives the workflow    | `claude --version`                                         |
+| [Playwright CLI](https://playwright.dev)                                                                           | Opens a real browser to scan the site | `playwright-cli --version` (install in the commands below) |
+| A [Fish Audio](https://fish.audio/?fpr=awzeir) API key (affiliate link; keys are under *API Keys* in your account) | The Drama 3 voice model               | see below                                                  |
+
 
 Then:
 
@@ -88,6 +98,8 @@ capture/  audio/  music/  videos/   your working folders (empty, git-ignored)
 
 ---
 
+
+
 ## Step 1: Scan your website
 
 Tell your agent:
@@ -106,6 +118,8 @@ The agent writes a short `BRIEF.md` (message, audience, length, format) and buil
 - The **one message** the video must communicate.
 - The **look** (colors, fonts) feels like your brand.
 
+
+
 ## Step 3: Write the script (use the marketing skills)
 
 Eight short lines, one per scene: **Hook → Problem → Intro → How it works → Features → Features → Proof → CTA.**
@@ -115,10 +129,13 @@ This is where the skills in `.agents/skills/` earn their keep. Try:
 > Use the product-marketing skill to capture my positioning, then copywriting to draft the 8-line trailer script, then copy-editing to cut every word that isn't pulling weight.
 
 Rules that make trailers work:
+
 - Open with a question your audience is already asking.
 - Use only facts from your real pages (numbers, price, features).
 - One idea per line. If a line needs two breaths, split it.
 - Put the deadline and the link in the last line, and mean it.
+
+
 
 ## Step 4: Record the voiceover (Fish Audio Drama 3)
 
@@ -135,7 +152,7 @@ node --env-file=.env .claude/skills/website-trailer/scripts/gen-vo.mjs script.js
 node --env-file=.env .claude/skills/website-trailer/scripts/gen-vo.mjs script.json --reuse --gap 0.6  # same take, more space between lines
 ```
 
-Lines feel crowded? Raise the gap between lines (`--gap`); it depends on the video. Don't like the take? Change the direction in brackets and regenerate the whole take. See [`docs/drama-3-guide.md`](docs/drama-3-guide.md) for every direction trick.
+Lines feel crowded? Raise the gap between lines (`--gap`); it depends on the video. Don't like the take? Change the direction in brackets and regenerate the whole take. See `[docs/drama-3-guide.md](docs/drama-3-guide.md)` for every direction trick.
 
 ## Step 5: Add your music (and level it)
 
@@ -149,6 +166,8 @@ bash .claude/skills/website-trailer/scripts/level-music.sh music/your-track.mp3 
 
 > **Why level instead of just turning it down?** Most tracks swing several decibels, so a low fixed volume still "pumps" under speech. Leveling makes a steady bed about 10 dB under the voice.
 
+
+
 ## Step 6: Build the video
 
 The agent starts from the proven template, fills it with your copy, screenshots and timings, then runs the checks:
@@ -157,6 +176,8 @@ The agent starts from the proven template, fills it with your copy, screenshots 
 npx hyperframes lint && npx hyperframes check
 npx hyperframes snapshot --at 2,6,12,20,30,40,50   # contact sheet to eyeball every scene
 ```
+
+
 
 ## Step 7: Preview, tweak, render
 
@@ -170,6 +191,8 @@ Click any text to edit it, drag clips on the timeline, listen to the mix. When y
 npx hyperframes render --quality high --output renders/video.mp4
 ```
 
+
+
 ## Step 8: Ship it
 
 Use the rest of the marketing skills to get it seen:
@@ -180,19 +203,25 @@ Use the rest of the marketing skills to get it seen:
 
 ---
 
+
+
 ## Troubleshooting
 
-| Symptom | Fix |
-|---|---|
-| Voice sounds generic, directions ignored | The `model: drama-3-preview` header is missing or misspelled. The API silently falls back to another model. |
-| `401` from Fish Audio | `FISH_API_KEY` is empty in `.env`, or you didn't pass `--env-file`. |
-| Music still "goes up and down" | Level the track (Step 5), then check the music element in `index.html` for stray volume-automation points. Studio can add them if you drag the envelope. |
-| Headline hides behind a card | Reduce its font size or move the card. Always read the snapshot contact sheet. |
-| Preview won't stop / folder is "busy" | `npx hyperframes preview "<project-dir>" --stop` before moving or deleting the project. |
-| Scan returns only public info | The pages need a login. Open the browser session (`--headed --persistent`) and log in first. |
-| `hyperframes capture` is blocked | Some sites block automated capture. Use the Playwright scan from Step 1 instead (only where you have permission). |
+
+| Symptom                                  | Fix                                                                                                                                                      |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Voice sounds generic, directions ignored | The `model: drama-3-preview` header is missing or misspelled. The API silently falls back to another model.                                              |
+| `401` from Fish Audio                    | `FISH_API_KEY` is empty in `.env`, or you didn't pass `--env-file`.                                                                                      |
+| Music still "goes up and down"           | Level the track (Step 5), then check the music element in `index.html` for stray volume-automation points. Studio can add them if you drag the envelope. |
+| Headline hides behind a card             | Reduce its font size or move the card. Always read the snapshot contact sheet.                                                                           |
+| Preview won't stop / folder is "busy"    | `npx hyperframes preview "<project-dir>" --stop` before moving or deleting the project.                                                                  |
+| Scan returns only public info            | The pages need a login. Open the browser session (`--headed --persistent`) and log in first.                                                             |
+| `hyperframes capture` is blocked         | Some sites block automated capture. Use the Playwright scan from Step 1 instead (only where you have permission).                                        |
+
 
 ---
+
+
 
 ## Disclaimer
 
@@ -211,6 +240,8 @@ Use the rest of the marketing skills to get it seen:
 By using this repository you accept these terms.
 
 ---
+
+
 
 ## Credits and licenses
 
