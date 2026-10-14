@@ -40,7 +40,7 @@ if (!reuse) {
     headers: {
       Authorization: `Bearer ${process.env.FISH_API_KEY}`,
       "Content-Type": "application/json",
-      model: "drama-3-preview", // a missing/misspelled header silently falls back to s2.1-pro
+      model: "drama-3", // a missing/misspelled header silently falls back to s2.1-pro
     },
     body: JSON.stringify({ text, reference_id: cfg.voice, format: "mp3" }),
   });

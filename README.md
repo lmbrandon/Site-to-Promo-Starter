@@ -210,7 +210,7 @@ Use the rest of the marketing skills to get it seen:
 
 | Symptom                                  | Fix                                                                                                                                                      |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Voice sounds generic, directions ignored | The `model: drama-3-preview` header is missing or misspelled. The API silently falls back to another model.                                              |
+| Voice sounds generic, directions ignored | The `model: drama-3` header is missing or misspelled. The API silently falls back to another model.                                              |
 | `401` from Fish Audio                    | `FISH_API_KEY` is empty in `.env`, or you didn't pass `--env-file`.                                                                                      |
 | Music still "goes up and down"           | Level the track (Step 5), then check the music element in `index.html` for stray volume-automation points. Studio can add them if you drag the envelope. |
 | Headline hides behind a card             | Reduce its font size or move the card. Always read the snapshot contact sheet.                                                                           |

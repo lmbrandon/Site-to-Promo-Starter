@@ -1,8 +1,7 @@
-# Using Fish Audio Drama 3 (`drama-3-preview`)
+# Using Fish Audio Drama 3 (`drama-3`)
 
 Drama 3 is Fish Audio's directable text-to-speech model. You write the script,
-then describe *how* each line should be performed. It is in **preview**, so
-behavior may change.
+then describe *how* each line should be performed.
 
 ## Setup
 
@@ -15,7 +14,7 @@ behavior may change.
 ## Making a request
 
 Use the normal `POST https://api.fish.audio/v1/tts` endpoint and set the
-**`model` header** to `drama-3-preview`.
+**`model` header** to `drama-3`.
 
 > If the `model` header is missing or misspelled, the request does **not** fail —
 > it silently falls back to `s2.1-pro`. Double-check the header if the
@@ -29,7 +28,7 @@ set -a; source .env; set +a
 curl --fail --show-error --request POST https://api.fish.audio/v1/tts \
   --header "Authorization: Bearer $FISH_API_KEY" \
   --header "Content-Type: application/json" \
-  --header "model: drama-3-preview" \
+  --header "model: drama-3" \
   --data '{
     "text": "[barely holding it together, forcing a smile] I'\''m fine. Really. Go on without me.",
     "reference_id": "f3a2b90078d54a65af4b95f63bc7798e",
@@ -49,7 +48,7 @@ const res = await fetch("https://api.fish.audio/v1/tts", {
   headers: {
     Authorization: `Bearer ${process.env.FISH_API_KEY}`,
     "Content-Type": "application/json",
-    model: "drama-3-preview",
+    model: "drama-3",
   },
   body: JSON.stringify({
     text: "I'm fine. [shaky breath] Really. [small laugh] Go on without me.",
@@ -74,7 +73,7 @@ $body = @{
 } | ConvertTo-Json
 Invoke-WebRequest https://api.fish.audio/v1/tts -Method Post -Body $body `
   -ContentType "application/json" -OutFile out.mp3 `
-  -Headers @{ Authorization = "Bearer $env:FISH_API_KEY"; model = "drama-3-preview" }
+  -Headers @{ Authorization = "Bearer $env:FISH_API_KEY"; model = "drama-3" }
 ```
 
 ## Voices used in the docs
